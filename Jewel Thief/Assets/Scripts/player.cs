@@ -5,6 +5,9 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     Vector3 Vec;
+    public float jumpForce = 3;
+    float velocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +31,12 @@ public class player : MonoBehaviour
         {
             this.transform.Translate(Vector3.left * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.Space))
         {
-            this.transform.Rotate(Vector3.up, -10);
+            velocity = jumpForce;
+
         }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            this.transform.Rotate(Vector3.up, -10);
-        }
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+     
     }
 }
